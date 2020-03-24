@@ -35,6 +35,23 @@
           </el-select>
         </el-form-item>
 
+        <el-form-item label="项目名称" prop="project">
+          <el-select
+            v-model="dictValue"
+            placeholder="项目名称"
+            clearable
+            size="small"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="dict in statusOptions"
+              :key="dict.dictValue"
+              :label="dict.dictLabel"
+              :value="dict.dictValue"
+            />
+          </el-select>
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" icon="el-icon-search" size="mini">搜索</el-button>
           <el-button icon="el-icon-refresh" size="mini">重置</el-button>
