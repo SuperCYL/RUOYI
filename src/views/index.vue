@@ -1,6 +1,29 @@
 <template>
   <div class="dashboard-editor-container">
 
+    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+
+      <el-form ref="queryForm" :inline="true" label-width="68px">
+        <el-form-item label="创建时间">
+          <el-date-picker
+            v-model="dateRange"
+            size="small"
+            style="width: 240px"
+            value-format="yyyy-MM-dd"
+            type="daterange"
+            range-separator="-"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          ></el-date-picker>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" icon="el-icon-search" size="mini">搜索</el-button>
+          <el-button icon="el-icon-refresh" size="mini">重置</el-button>
+        </el-form-item>
+      </el-form>
+
+    </el-row>
+
     <panel-group @handleSetLineChartData="handleSetLineChartData" />
 
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
@@ -66,7 +89,8 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.newVisitis,
+      dateRange:""
     }
   },
   methods: {
