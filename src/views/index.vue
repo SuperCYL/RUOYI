@@ -16,10 +16,30 @@
             end-placeholder="结束日期"
           ></el-date-picker>
         </el-form-item>
+        
+
+        <el-form-item label="招聘渠道" prop="qd">
+          <el-select
+            v-model="dictValue"
+            placeholder="招聘渠道"
+            clearable
+            size="small"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="dict in statusOptions"
+              :key="dict.dictValue"
+              :label="dict.dictLabel"
+              :value="dict.dictValue"
+            />
+          </el-select>
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" icon="el-icon-search" size="mini">搜索</el-button>
           <el-button icon="el-icon-refresh" size="mini">重置</el-button>
         </el-form-item>
+
       </el-form>
 
     </el-row>
@@ -90,7 +110,18 @@ export default {
   data() {
     return {
       lineChartData: lineChartData.newVisitis,
-      dateRange:""
+      dateRange:"",
+      dictValue:'',
+      statusOptions:[
+        {
+          dictLabel:'赶集网',
+          dictValue:'1'
+        },
+        {
+            dictLabel:'boss直聘',
+            dictValue:'2'
+        }
+      ]
     }
   },
   methods: {
